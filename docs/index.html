@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MindNest</title><meta name="description" content="Cal Hacks 12.0 project: a multi-agent AI conversation simulator wired to an SO-101 robot arm that plays rock-paper-scissors over a REST API. My first hardware project.">
+<meta property="og:title" content="MindNest — Cal Hacks 12.0"><meta property="og:image" content="https://kitrakrev.github.io/mindnest/media/so101_still.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f6f2;--panel:#fff;--ink:#1d1d1f;--muted:#6b6b70;--line:#e3e1da;--accent:#1f5fd6;--side:#0f1a2e;--sideink:#d7e0ef}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121314;--panel:#1b1d20;--ink:#ecece8;--muted:#9a9c98;--line:#2c2f33;--accent:#6ea0ff;--side:#0a1020}}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--side);color:var(--sideink);padding:40px 16px 32px}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header .wrap{padding:0}
+header h1{color:#fff;margin:0 0 6px;font-size:32px;letter-spacing:-.01em}
+header p{margin:0 0 16px;opacity:.85;font-size:16px}
+.btns a{display:inline-block;margin:0 8px 8px 0;padding:7px 14px;border-radius:8px;text-decoration:none;font-size:14px;border:1px solid #2f4a7a;color:#fff}
+.btns a.pri{background:#1f5fd6;border-color:#1f5fd6}
+main{padding:24px 16px 40px}
+h2{font-size:19px;margin:28px 0 10px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.note{border-left:3px solid var(--accent)}
+ul{margin:6px 0;padding-left:20px}li{margin:4px 0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.flow span{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:7px;padding:6px 10px;font-size:13px}
+.flow i{color:var(--muted);font-style:normal}
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.vids figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.vids video,.hero-media video{width:100%;display:block;background:#000;max-height:520px}
+.vids figcaption{padding:10px 12px;font-size:13.5px;color:var(--muted)}
+.hero-media{max-width:420px;margin:0 auto 6px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.pill{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12.5px;border:1px solid var(--line);margin:0 6px 6px 0;background:var(--panel)}
+.muted{color:var(--muted)}code{font-family:ui-monospace,Menlo,monospace;font-size:13px}
+a{color:var(--accent)}footer{border-top:1px solid var(--line);padding:18px 16px;color:var(--muted);font-size:13px}
+@media (max-width:600px){header h1{font-size:26px}}
+</style></head><body>
+<header><div class="wrap"><h1>MindNest</h1><p>A multi-agent AI conversation simulator wired to an SO-101 robot arm that plays rock-paper-scissors over a REST API. Built at Cal Hacks 12.0, Oct 24–26, 2025, San Francisco.</p>
+<div class="btns"><a class="pri" href="https://github.com/kitrakrev/mindnest">View on GitHub</a><a href="https://kitrakrev.github.io/">&larr; kitrakrev.github.io</a></div></div></header>
+<main><div class="wrap">
+
+<div class="card note"><strong>My first hardware project.</strong> Before this weekend everything I built lived on a screen. Here, an HTTP call from a laptop had to turn into a servo landing a gesture on time, on a crowded hackathon floor.</div>
+
+<div class="hero-media"><video src="media/so101_calhacks_clip.mp4" poster="media/so101_calhacks_clip_poster.jpg" controls muted playsinline loop preload="metadata"></video></div>
+<p class="muted" style="text-align:center;margin-top:0">API call on the laptop &rarr; the SO-101 arm shakes, throws a gesture, and resets.</p>
+
+<h2>How it fits together</h2>
+<div class="flow"><span>Chat Simulator (personas)</span><i>&rarr;</i><span>FastAPI robot server</span><i>&rarr;</i><span>RPS controller</span><i>&rarr;</i><span>LeRobot + Feetech servos</span><i>&rarr;</i><span>SO-101 arm</span></div>
+
+<h2>Robot controller (<code>bot_code/</code>)</h2>
+<div class="card"><ul>
+<li>FastAPI server with endpoints for <code>/rock</code>, <code>/paper</code>, <code>/scissors</code>, <code>/random</code>, plus <code>/shake</code>, <code>/rest</code>, <code>/yes</code> and <code>/no</code> gestures.</li>
+<li><code>/reach_human</code>: scans positions with OpenCV face detection and reaches toward the nearest person.</li>
+<li>Drives the SO-101 through Hugging Face LeRobot (Feetech servo bus), with smoothing and shake-timing tests.</li>
+</ul></div>
+
+<h2>Chat Simulator (<code>chat_simulator/</code>)</h2>
+<div class="card"><ul>
+<li>Multi-persona AI conversations with dynamic persona creation and group management.</li>
+<li>A global Meta-Advisor with persistent memory through Letta.</li>
+<li>Real-time updates over WebSockets, SQLite storage, and TLDR summaries of conversations.</li>
+</ul></div>
+
+<h2>Videos from the weekend</h2>
+<div class="vids">
+<figure><video src="media/so101_full_session.mp4" poster="media/so101_full_session_poster.jpg" controls muted playsinline preload="none"></video><figcaption>Full 2-minute session: API calls from the laptop and the arm responding.</figcaption></figure>
+<figure><video src="media/so101_closeup.mp4" poster="media/so101_closeup_poster.jpg" controls muted playsinline preload="none"></video><figcaption>Close-up of the SO-101 arm on the table.</figcaption></figure>
+<figure><video src="media/chat_simulator_demo.mp4" poster="media/chat_simulator_demo_poster.jpg" controls muted playsinline preload="none"></video><figcaption>Chat Simulator UI, filmed off the laptop screen.</figcaption></figure>
+<figure><video src="media/calhacks_floor.mp4" poster="media/calhacks_floor_poster.jpg" controls muted playsinline preload="none"></video><figcaption>The Cal Hacks 12.0 hacking floor.</figcaption></figure>
+</div>
+
+<h2>Stack</h2>
+<p><span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">LeRobot</span><span class="pill">SO-101</span><span class="pill">OpenCV</span><span class="pill">Letta</span><span class="pill">WebSockets</span><span class="pill">SQLite</span></p>
+
+</div></main>
+<footer><div class="wrap">Karthik Raja Anandan · <a href="https://kitrakrev.github.io/">kitrakrev.github.io</a> · <a href="https://github.com/kitrakrev/mindnest">Code</a></div></footer>
+</body></html>
