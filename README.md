@@ -8,7 +8,7 @@ AI-powered conversation platform with robot control integration. Built at **Cal 
   <img src="media/so101_demo.gif" width="280" alt="SO-101 arm at Cal Hacks 12.0">
 </p>
 
-🎥 **Demo clip (40 s):** [media/so101_calhacks_clip.mp4](media/so101_calhacks_clip.mp4)
+🎥 **Demo clip (31 s, API call on the laptop -> arm gestures):** [media/so101_calhacks_clip.mp4](media/so101_calhacks_clip.mp4)
 
 
 ## Projects
