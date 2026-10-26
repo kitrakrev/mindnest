@@ -11,6 +11,15 @@ AI-powered conversation platform with robot control integration. Built at **Cal 
 🎥 **Demo clip (31 s, API call on the laptop -> arm gestures):** [media/so101_calhacks_clip.mp4](media/so101_calhacks_clip.mp4)
 
 
+### More videos from Cal Hacks 12.0
+
+| Video | What it shows |
+|---|---|
+| [so101_full_session.mp4](media/so101_full_session.mp4) | Full 2-min session: robot API calls from the laptop and the SO-101 arm responding |
+| [so101_closeup.mp4](media/so101_closeup.mp4) | Close-up of the SO-101 arm on the table |
+| [chat_simulator_demo.mp4](media/chat_simulator_demo.mp4) | Chat Simulator UI walkthrough (filmed off the laptop screen) |
+| [calhacks_floor.mp4](media/calhacks_floor.mp4) | The Cal Hacks 12.0 hacking floor |
+
 ## Projects
 
 ### 🎭 Chat Simulator (`chat_simulator/`)
