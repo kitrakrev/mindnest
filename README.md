@@ -1,6 +1,15 @@
 # MindNest
 
-AI-powered conversation platform with robot control integration.
+AI-powered conversation platform with robot control integration. Built at **Cal Hacks 12.0** (Oct 24–26, 2025, San Francisco).
+
+> My first hardware project: an SO-101 robot arm driven from a REST API, playing rock-paper-scissors live on the hackathon floor.
+
+<p align="center">
+  <img src="media/so101_demo.gif" width="280" alt="SO-101 arm at Cal Hacks 12.0">
+</p>
+
+🎥 **Demo clip (40 s):** [media/so101_calhacks_clip.mp4](media/so101_calhacks_clip.mp4)
+
 
 ## Projects
 
